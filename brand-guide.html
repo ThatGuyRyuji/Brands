@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: #2a2a2a;
+    --accent: #e8ff47;
+    --accent2: #ff4757;
+    --text: #f0f0f0;
+    --muted: #666;
+    --tag-bg: #1e1e1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 60px 40px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: 'BRANDS';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 180px;
+    color: #ffffff06;
+    letter-spacing: -5px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    letter-spacing: 4px;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  header h1 span {
+    color: var(--accent);
+  }
+
+  header p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .filter-bar {
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 6px;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: #e8ff4710;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border-top: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--bg);
+    padding: 32px;
+    transition: background 0.2s;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .card:hover {
+    background: var(--surface);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .tier-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 3px 8px;
+    border: 1px solid;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  .tier-badge-s { background: #ff4444; color: #fff; border-color: #ff4444; }
+  .tier-badge-a { background: #ff8c00; color: #fff; border-color: #ff8c00; }
+  .tier-badge-b { background: #e8cc00; color: #111; border-color: #e8cc00; }
+  .tier-badge-c { background: #4caf50; color: #fff; border-color: #4caf50; }
+  .tier-badge-d { background: #2196f3; color: #fff; border-color: #2196f3; }
+  .tier-badge-f { background: #555; color: #aaa; border-color: #555; }
+
+  .brand-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .brand-name a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .brand-name a:hover {
+    color: var(--accent);
+  }
+
+  .price-badge {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  .price-low { border-color: #4caf50; color: #4caf50; }
+  .price-mid { border-color: var(--accent); color: var(--accent); }
+  .price-high { border-color: var(--accent2); color: var(--accent2); }
+
+  .aesthetics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+  }
+
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .col-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .pros .col-label { color: #4caf50; }
+  .cons .col-label { color: var(--accent2); }
+
+  .pros-cons ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pros-cons li {
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.4;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .pros li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: #4caf50;
+    font-weight: 500;
+  }
+
+  .cons li::before {
+    content: '−';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+    font-weight: 500;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  .hidden { display: none; }
+
+  /* TABS */
+  .tab-nav {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    padding: 18px 32px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: -1px;
+  }
+
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* TIER LIST */
+  .tier-page {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tier-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+    line-height: 1;
+  }
+
+  .tier-title span { color: var(--accent); }
+
+  .tier-subtitle {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .tier-row {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 3px;
+    min-height: 72px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .tier-row:nth-child(1) { animation-delay: 0.05s; }
+  .tier-row:nth-child(2) { animation-delay: 0.10s; }
+  .tier-row:nth-child(3) { animation-delay: 0.15s; }
+  .tier-row:nth-child(4) { animation-delay: 0.20s; }
+  .tier-row:nth-child(5) { animation-delay: 0.25s; }
+  .tier-row:nth-child(6) { animation-delay: 0.30s; }
+
+  .tier-label {
+    width: 72px;
+    min-width: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+
+  .tier-s .tier-label { background: #ff4444; color: #fff; }
+  .tier-a .tier-label { background: #ff8c00; color: #fff; }
+  .tier-b .tier-label { background: #e8cc00; color: #111; }
+  .tier-c .tier-label { background: #4caf50; color: #fff; }
+  .tier-d .tier-label { background: #2196f3; color: #fff; }
+  .tier-f .tier-label { background: #555; color: #aaa; }
+
+  .tier-brands {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 16px;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: none;
+  }
+
+  .tier-chip {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: var(--text);
+    transition: all 0.2s;
+    cursor: default;
+    position: relative;
+  }
+
+  .tier-chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .tier-chip:hover .tier-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .tier-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: #1e1e1e;
+    border: 1px solid var(--border);
+    color: #ccc;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0;
+    padding: 8px 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.2s;
+    pointer-events: none;
+    z-index: 10;
+    line-height: 1.5;
+    text-align: center;
+    min-width: 160px;
+    max-width: 220px;
+    white-space: normal;
+  }
+
+  .tier-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--border);
+  }
+
+  .tier-legend {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  footer {
+    padding: 30px 40px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>YOUR <span>BRAND</span> GUIDE</h1>
+  <p>Mens fashion · All recommended brands · Curated 2026</p>
+</header>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('brands', this)">Brand Guide</button>
+  <button class="tab-btn" onclick="switchTab('tierlist', this)">Dbizzle's Diabolical Delegation</button>
+</div>
+
+<div id="tab-brands" class="tab-content active">
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" onclick="filter('all', this)">All</button>
+  <button class="filter-btn" onclick="filter('budget', this)">Under $50</button>
+  <button class="filter-btn" onclick="filter('mid', this)">$25–$99</button>
+  <button class="filter-btn" onclick="filter('premium', this)">$100+</button>
+  <button class="filter-btn" onclick="filter('streetwear', this)">Streetwear</button>
+  <button class="filter-btn" onclick="filter('basics', this)">Basics</button>
+  <button class="filter-btn" onclick="filter('alt', this)">Alt / Grunge</button>
+  <button class="filter-btn" onclick="filter('luxury', this)">Luxury</button>
+  <span class="filter-label" style="margin-left:12px">Sort:</span>
+  <button class="filter-btn" id="sort-btn" onclick="toggleSort(this)">A → Z</button>
+</div>
+
+<div class="grid" id="grid">
+
+  <!-- UNIQLO -->
+  <div class="card" data-tags="mid basics minimal japanese">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.uniqlo.com" target="_blank">Uniqlo</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-s">S Tier</div>
+        <div class="price-badge price-mid">$15 – $80</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Minimalist</span>
+      <span class="tag">Basics</span>
+      <span class="tag">Japanese</span>
+      <span class="tag">Functional</span>
+      <span class="tag">Casual</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Best quality-to-price ratio</li>
+          <li>Excellent layering basics</li>
+          <li>Innovative fabrics (Heattech, AIRism)</li>
+          <li>Consistent sizing</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Zero edge or personality</li>
+          <li>Not trend-forward</li>
+          <li>Can look generic alone</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEVI'S -->
+  <div class="card" data-tags="mid basics denim heritage americana">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.levi.com" target="_blank">Levi's</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-s">S Tier</div>
+        <div class="price-badge price-mid">$40 – $120</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Heritage</span>
+      <span class="tag">Americana</span>
+      <span class="tag">Denim</span>
+      <span class="tag">Casual</span>
+      <span class="tag">Workwear</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Iconic denim heritage</li>
+          <li>501s are a wardrobe staple</li>
+          <li>Works across every aesthetic</li>
+          <li>Durable and long-lasting</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Denim can be pricey</li>
+          <li>Non-denim pieces underwhelm</li>
+          <li>Fit varies by cut</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZARA -->
+  <div class="card" data-tags="mid streetwear trendy contemporary">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.zara.com" target="_blank">Zara</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-c">C Tier</div>
+        <div class="price-badge price-mid">$25 – $100</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Contemporary</span>
+      <span class="tag">Trend-forward</span>
+      <span class="tag">Smart casual</span>
+      <span class="tag">Evening</span>
+      <span class="tag">Streetwear</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Fastest trend turnaround</li>
+          <li>Strong statement pieces</li>
+          <li>Wide range of styles</li>
+          <li>Good for seasonal buys</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Inconsistent quality</li>
+          <li>Fast fashion ethics issues</li>
+          <li>Pieces date quickly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- COS -->
+  <div class="card" data-tags="mid basics minimal scandinavian">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.cos.com" target="_blank">COS</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-a">A Tier</div>
+        <div class="price-badge price-mid">$40 – $150</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Minimalist</span>
+      <span class="tag">Scandinavian</span>
+      <span class="tag">Architectural</span>
+      <span class="tag">Smart casual</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Excellent quality for price</li>
+          <li>Timeless, not trendy</li>
+          <li>Great layering pieces</li>
+          <li>Strong outerwear</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Some pieces creep premium</li>
+          <li>Very minimal — needs personality</li>
+          <li>Limited streetwear options</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- OLD NAVY -->
+  <div class="card" data-tags="budget basics casual americana">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.oldnavy.gap.com" target="_blank">Old Navy</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-f">F Tier</div>
+        <div class="price-badge price-low">$10 – $60</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Casual</span>
+      <span class="tag">Basics</span>
+      <span class="tag">Americana</span>
+      <span class="tag">Sporty</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Very affordable</li>
+          <li>Great for throwaway basics</li>
+          <li>Wide size range</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>No fashion credibility</li>
+          <li>Low quality materials</li>
+          <li>Very generic aesthetic</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKDAY -->
+  <div class="card" data-tags="mid streetwear scandinavian denim">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.weekday.com" target="_blank">Weekday</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-c">C Tier</div>
+        <div class="price-badge price-mid">$30 – $90</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Scandinavian</span>
+      <span class="tag">Streetwear</span>
+      <span class="tag">Denim</span>
+      <span class="tag">Indie</span>
+      <span class="tag">Y2K</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Strong denim range</li>
+          <li>Interesting streetwear cuts</li>
+          <li>Reasonable pricing</li>
+          <li>Good seasonal drops</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Quality inconsistent</li>
+          <li>Hit or miss collections</li>
+          <li>Limited physical stores</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSOMNIA VISUALS -->
+  <div class="card" data-tags="mid alt streetwear grunge dark">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.insomniavisuals.com" target="_blank">Insomnia Visuals</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-a">A Tier</div>
+        <div class="price-badge price-mid">$40 – $120</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Grunge</span>
+      <span class="tag">Alt</span>
+      <span class="tag">Dark</span>
+      <span class="tag">Gothic</span>
+      <span class="tag">Streetwear</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Genuine subculture identity</li>
+          <li>Distinctive graphic work</li>
+          <li>Viral pieces (Scream Hoodie)</li>
+          <li>Independent brand with soul</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Very niche aesthetic</li>
+          <li>Limited range of styles</li>
+          <li>Stock sells out fast</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- VANS -->
+  <div class="card" data-tags="budget mid streetwear skate alt">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.vans.com" target="_blank">Vans</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-b">B Tier</div>
+        <div class="price-badge price-mid">$50 – $100</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Skate</span>
+      <span class="tag">Streetwear</span>
+      <span class="tag">Alt</span>
+      <span class="tag">Casual</span>
+      <span class="tag">Punk</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Iconic silhouettes (Old Skool)</li>
+          <li>Neutral colourways for layering</li>
+          <li>Genuine skate heritage</li>
+          <li>Widely available</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Quality has declined over years</li>
+          <li>Very ubiquitous now</li>
+          <li>Apparel weaker than footwear</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANGO -->
+  <div class="card" data-tags="mid basics trendy smart">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.mango.com" target="_blank">Mango</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-b">B Tier</div>
+        <div class="price-badge price-mid">$30 – $100</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Mediterranean</span>
+      <span class="tag">Smart casual</span>
+      <span class="tag">Contemporary</span>
+      <span class="tag">Trend-forward</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Zara's closest competitor</li>
+          <li>Often better quality than Zara</li>
+          <li>Strong tailoring pieces</li>
+          <li>Good price-to-look ratio</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Less streetwear focus</li>
+          <li>Sizing can run small</li>
+          <li>Fewer stores than Zara</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARKET -->
+  <div class="card" data-tags="mid basics scandinavian minimal">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.arket.com" target="_blank">Arket</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-b">B Tier</div>
+        <div class="price-badge price-mid">$40 – $150</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Scandinavian</span>
+      <span class="tag">Minimal</span>
+      <span class="tag">Heritage</span>
+      <span class="tag">Outdoor</span>
+      <span class="tag">Relaxed</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Better quality than COS siblings</li>
+          <li>Timeless, functional design</li>
+          <li>Great knitwear and outerwear</li>
+          <li>More relaxed than COS</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Some pieces borderline premium</li>
+          <li>Very limited stores globally</li>
+          <li>Safe aesthetic, low risk/reward</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASOS -->
+  <div class="card" data-tags="budget mid trendy streetwear basics">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.asos.com" target="_blank">ASOS Own Label</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-d">D Tier</div>
+        <div class="price-badge price-low">$15 – $60</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Trend-forward</span>
+      <span class="tag">Streetwear</span>
+      <span class="tag">Y2K</span>
+      <span class="tag">Casual</span>
+      <span class="tag">Festival</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Extremely affordable</li>
+          <li>Great for experimenting</li>
+          <li>Wide size and style range</li>
+          <li>Fast shipping</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Inconsistent quality</li>
+          <li>Pieces can feel throwaway</li>
+          <li>Sizing wildly inconsistent</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLEASURES -->
+  <div class="card" data-tags="mid alt streetwear grunge graphic">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://pleasuresnow.com/" target="_blank">Pleasures</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-a">A Tier</div>
+        <div class="price-badge price-mid">$50 – $150</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Streetwear</span>
+      <span class="tag">Grunge</span>
+      <span class="tag">Rock</span>
+      <span class="tag">Alt</span>
+      <span class="tag">Graphic</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Real subculture credibility</li>
+          <li>Strong graphic tees and hoodies</li>
+          <li>Underground/rock culture refs</li>
+          <li>Great resale value</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Pricier end of mid-range</li>
+          <li>Heavy drops culture</li>
+          <li>Not for minimalists</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- IUTER -->
+  <div class="card" data-tags="mid alt streetwear dark european">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.iuter.com" target="_blank">Iuter</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-c">C Tier</div>
+        <div class="price-badge price-mid">$40 – $120</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">European streetwear</span>
+      <span class="tag">Dark</span>
+      <span class="tag">Skate</span>
+      <span class="tag">Alt</span>
+      <span class="tag">Graphic</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Very slept on globally</li>
+          <li>Italian quality standards</li>
+          <li>Strong dark streetwear aesthetic</li>
+          <li>Unique outside Europe</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Limited availability outside EU</li>
+          <li>Smaller brand awareness</li>
+          <li>Shipping can be slow</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBEY -->
+  <div class="card" data-tags="mid alt streetwear graphic skate">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.obeyclothing.com" target="_blank">Obey Clothing</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-c">C Tier</div>
+        <div class="price-badge price-mid">$30 – $90</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Streetwear</span>
+      <span class="tag">Skate</span>
+      <span class="tag">Graphic</span>
+      <span class="tag">Political</span>
+      <span class="tag">Alt</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Real street art roots (Shepard Fairey)</li>
+          <li>Strong graphic range</li>
+          <li>Very accessible price</li>
+          <li>Wide availability</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Lost some cool factor over time</li>
+          <li>Mainstream now</li>
+          <li>Quality varies by piece</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOLCOM -->
+  <div class="card" data-tags="budget mid alt skate surf">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.volcom.com" target="_blank">Volcom</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-d">D Tier</div>
+        <div class="price-badge price-mid">$25 – $80</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Skate</span>
+      <span class="tag">Surf</span>
+      <span class="tag">Alt</span>
+      <span class="tag">Casual</span>
+      <span class="tag">Outdoor</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Genuine skate/surf culture</li>
+          <li>Very affordable</li>
+          <li>Durable and functional</li>
+          <li>Good outerwear for price</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Not very fashion-forward</li>
+          <li>Niche aesthetic</li>
+          <li>Better for lifestyle than style</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- THRILLS CO -->
+  <div class="card" data-tags="mid alt streetwear vintage graphic">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://us.thrills.co/" target="_blank">Thrills Co</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-b">B Tier</div>
+        <div class="price-badge price-mid">$40 – $90</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Vintage</span>
+      <span class="tag">Workwear</span>
+      <span class="tag">Graphic</span>
+      <span class="tag">Streetwear</span>
+      <span class="tag">Australian</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Massively underrated globally</li>
+          <li>Excellent vintage graphic tees</li>
+          <li>Great quality for price</li>
+          <li>Workwear shapes done well</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Limited physical presence</li>
+          <li>Shipping from Australia slow</li>
+          <li>Low brand recognition</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RVCA -->
+  <div class="card" data-tags="mid alt streetwear skate art">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.rvca.com" target="_blank">RVCA</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-b">B Tier</div>
+        <div class="price-badge price-mid">$30 – $90</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Skate</span>
+      <span class="tag">Art</span>
+      <span class="tag">Streetwear</span>
+      <span class="tag">Alt</span>
+      <span class="tag">Surf</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Art meets skate culture</li>
+          <li>Excellent quality for price</li>
+          <li>Strong artist collaborations</li>
+          <li>Versatile pieces</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Not widely known in fashion circles</li>
+          <li>Some pieces too casual</li>
+          <li>Branding can be heavy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DICKIES -->
+  <div class="card" data-tags="budget basics workwear utility">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.dickies.com" target="_blank">Dickies</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-c">C Tier</div>
+        <div class="price-badge price-low">$20 – $60</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Workwear</span>
+      <span class="tag">Utility</span>
+      <span class="tag">Americana</span>
+      <span class="tag">Skate</span>
+      <span class="tag">Streetwear</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Layers incredibly well</li>
+          <li>Extremely durable</li>
+          <li>Very affordable</li>
+          <li>Iconic workwear silhouettes</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Very utilitarian look</li>
+          <li>Needs styling to elevate</li>
+          <li>Limited colour palette</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARHARTT WIP -->
+  <div class="card" data-tags="mid basics streetwear workwear utility">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://us.carhartt-wip.com/en-us/" target="_blank">Carhartt WIP</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-s">S Tier</div>
+        <div class="price-badge price-mid">$50 – $150</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Workwear</span>
+      <span class="tag">Utility</span>
+      <span class="tag">Streetwear</span>
+      <span class="tag">Minimal</span>
+      <span class="tag">European</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Fashion-forward workwear</li>
+          <li>Excellent build quality</li>
+          <li>Strong brand credibility</li>
+          <li>Iconic pieces (Detroit jacket)</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Pricier end of mid-range</li>
+          <li>Some pieces push premium</li>
+          <li>Oversaturated in streetwear</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHICLARA -->
+  <div class="card" data-tags="mid trendy asian contemporary">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.chiclara.com" target="_blank">Chiclara</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-d">D Tier</div>
+        <div class="price-badge price-mid">$40 – $130</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">East Asian</span>
+      <span class="tag">Contemporary</span>
+      <span class="tag">Avant-garde</span>
+      <span class="tag">K-fashion</span>
+      <span class="tag">Streetwear</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Unique East Asian aesthetics</li>
+          <li>Pieces stand out from the crowd</li>
+          <li>Wide variety of styles</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Mixed quality reviews</li>
+          <li>Returns are expensive</li>
+          <li>Shipping can be slow</li>
+          <li>Proceed with caution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- QUINCE -->
+  <div class="card" data-tags="mid basics minimal japanese">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.quince.com" target="_blank">Quince</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-b">B Tier</div>
+        <div class="price-badge price-mid">$20 – $100</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Minimalist</span>
+      <span class="tag">Basics</span>
+      <span class="tag">Casual</span>
+      <span class="tag">Luxury Materials</span>
+      <span class="tag">Capsule Wardrobe</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Cashmere and knitwear are exceptional value</li>
+          <li>Ships direct from factory — low prices</li>
+          <li>365 day return policy</li>
+          <li>Sustainable materials and ethics</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Zero edge or streetwear presence</li>
+          <li>Dress shirts underdeliver</li>
+          <li>Sizing runs fitted — size up</li>
+          <li>Delicate pieces need careful washing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RYOKO RAIN -->
+  <div class="card" data-tags="premium luxury streetwear alt japanese">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://ryokorain.com" target="_blank">Ryoko Rain</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-a">A Tier</div>
+        <div class="price-badge price-high">$50 – $180</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Luxury Streetwear</span>
+      <span class="tag">Japanese Heritage</span>
+      <span class="tag">Alt</span>
+      <span class="tag">Graphic</span>
+      <span class="tag">Streetwear</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Real identity — butterfly motif, Japanese roots</li>
+          <li>Worn by athletes and entertainers</li>
+          <li>Made in Orange County, CA</li>
+          <li>Strong collab game (LA Galaxy, MLB)</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Pricier than most brands on this list</li>
+          <li>Pieces sell out fast</li>
+          <li>Limited returns — store credit only</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end grid -->
+</div><!-- end tab-brands -->
+
+<div id="tab-tierlist" class="tab-content">
+  <div class="tier-page">
+    <div class="tier-title">Dbizzle's <span>Diabolical</span> Delegation</div>
+    <div class="tier-subtitle">Claude's official brand power ranking · Hover each brand for the verdict</div>
+
+    <div class="tier-row tier-s">
+      <div class="tier-label">S</div>
+      <div class="tier-brands">
+        <div class="tier-chip">Uniqlo<div class="tier-tooltip">The GOAT of basics. Best quality-to-price on the planet. Non-negotiable foundation piece.</div></div>
+        <div class="tier-chip">Levi's<div class="tier-tooltip">501s are one of the greatest garments ever made. Heritage, quality, and versatility all in one.</div></div>
+        <div class="tier-chip">Carhartt WIP<div class="tier-tooltip">Workwear elevated to an art form. The Detroit jacket alone earns this spot.</div></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-a">
+      <div class="tier-label">A</div>
+      <div class="tier-brands">
+        <div class="tier-chip">COS<div class="tier-tooltip">Elevated minimalism done right. Outerwear and layering pieces are exceptional.</div></div>
+        <div class="tier-chip">Insomnia Visuals<div class="tier-tooltip">Genuine subculture soul. The Scream Hoodie is iconic. If dark alt is your lane, this is your brand.</div></div>
+        <div class="tier-chip">Pleasures<div class="tier-tooltip">Real street credibility. Graphic work is second to none in this price range.</div></div>
+        <div class="tier-chip">Ryoko Rain<div class="tier-tooltip">OC luxury streetwear with real soul. Japanese heritage, butterfly motif, and serious collab credibility. Worth the splurge.</div></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-b">
+      <div class="tier-label">B</div>
+      <div class="tier-brands">
+        <div class="tier-chip">Mango<div class="tier-tooltip">Zara's more reliable cousin. Better quality, slightly less hype. Solid all-rounder.</div></div>
+        <div class="tier-chip">Arket<div class="tier-tooltip">Relaxed Scandinavian quality. Great knitwear. Plays it safe but delivers consistently.</div></div>
+        <div class="tier-chip">Thrills Co<div class="tier-tooltip">Massively underrated. Vintage graphics and workwear cuts done properly. Should be way more famous.</div></div>
+        <div class="tier-chip">RVCA<div class="tier-tooltip">Art meets skate. Great quality for the price. Underrated in fashion circles.</div></div>
+        <div class="tier-chip">Vans<div class="tier-tooltip">Iconic footwear, weaker apparel. Old Skool is timeless. Quality dipped but the classics hold.</div></div>
+        <div class="tier-chip">Quince<div class="tier-tooltip">Insane value for cashmere and knitwear. Zero streetwear cred but as a basics layer brand it genuinely delivers.</div></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-c">
+      <div class="tier-label">C</div>
+      <div class="tier-brands">
+        <div class="tier-chip">Zara<div class="tier-tooltip">Great for trend pieces if you shop selectively. Inconsistent quality keeps it out of B.</div></div>
+        <div class="tier-chip">Weekday<div class="tier-tooltip">Interesting aesthetic, inconsistent execution. Strong denim, weaker everything else.</div></div>
+        <div class="tier-chip">Iuter<div class="tier-tooltip">European dark streetwear done right — but limited global access holds it back.</div></div>
+        <div class="tier-chip">Dickies<div class="tier-tooltip">Underrated layering foundation. Needs styling to shine, but durable and affordable.</div></div>
+        <div class="tier-chip">Obey<div class="tier-tooltip">Lost some edge over the years. Still solid graphics but the cool factor faded.</div></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-d">
+      <div class="tier-label">D</div>
+      <div class="tier-brands">
+        <div class="tier-chip">Chiclara<div class="tier-tooltip">Interesting concept, unreliable execution. Mixed quality and expensive returns. Proceed with caution.</div></div>
+        <div class="tier-chip">Volcom<div class="tier-tooltip">Genuine skate roots but too lifestyle-focused to be a real style brand. Good outerwear, stop there.</div></div>
+        <div class="tier-chip">ASOS Own Label<div class="tier-tooltip">Good for cheap experiments only. Inconsistent sizing and throwaway quality keep it grounded.</div></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-f">
+      <div class="tier-label">F</div>
+      <div class="tier-brands">
+        <div class="tier-chip">Old Navy<div class="tier-tooltip">No fashion credibility. Low quality. Skip entirely unless you need a beach towel outfit.</div></div>
+      </div>
+    </div>
+
+    <div class="tier-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#ff4444"></div> S — Essential, no debate</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ff8c00"></div> A — Highly recommended</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e8cc00"></div> B — Solid, shop smart</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4caf50"></div> C — Situational, selective</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#2196f3"></div> D — Proceed with caution</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#555"></div> F — Hard pass</div>
+    </div>
+  </div>
+</div><!-- end tab-tierlist -->
+
+<footer>
+  <span>Brand Guide · 2026 · All brands carry menswear</span>
+</footer>
+
+<script>
+  let sortedAlpha = false;
+
+  function toggleSort(btn) {
+    sortedAlpha = !sortedAlpha;
+    btn.textContent = sortedAlpha ? 'Z → A' : 'A → Z';
+    btn.classList.toggle('active', sortedAlpha);
+    sortCards();
+  }
+
+  function sortCards() {
+    const grid = document.getElementById('grid');
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    cards.sort((a, b) => {
+      const nameA = a.querySelector('.brand-name a') ? a.querySelector('.brand-name a').textContent.trim() : a.querySelector('.brand-name').textContent.trim();
+      const nameB = b.querySelector('.brand-name a') ? b.querySelector('.brand-name a').textContent.trim() : b.querySelector('.brand-name').textContent.trim();
+      return sortedAlpha ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+    });
+    cards.forEach(card => grid.appendChild(card));
+  }
+
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  function filter(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, i) => {
+      const tags = card.dataset.tags || '';
+      let show = false;
+
+      if (type === 'all') show = true;
+      else if (type === 'budget') show = tags.includes('budget');
+      else if (type === 'mid') show = tags.includes('mid');
+      else if (type === 'premium') show = tags.includes('premium');
+      else if (type === 'streetwear') show = tags.includes('streetwear');
+      else if (type === 'basics') show = tags.includes('basics');
+      else if (type === 'alt') show = tags.includes('alt') || tags.includes('grunge');
+      else if (type === 'luxury') show = tags.includes('luxury') || tags.includes('premium');
+
+      card.style.display = show ? 'block' : 'none';
+      if (show) {
+        card.style.animationDelay = (i * 0.03) + 's';
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = 'fadeUp 0.4s ease both';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
