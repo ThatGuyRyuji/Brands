@@ -475,6 +475,7 @@
   <button class="filter-btn" onclick="filter('streetwear', this)">Streetwear</button>
   <button class="filter-btn" onclick="filter('basics', this)">Basics</button>
   <button class="filter-btn" onclick="filter('alt', this)">Alt / Grunge</button>
+  <button class="filter-btn" onclick="filter('luxury', this)">Luxury</button>
   <span class="filter-label" style="margin-left:12px">Sort:</span>
   <button class="filter-btn" id="sort-btn" onclick="toggleSort(this)">A → Z</button>
 </div>
@@ -1236,6 +1237,82 @@
       </div>
     </div>
   </div>
+  <!-- QUINCE -->
+  <div class="card" data-tags="mid basics minimal japanese">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://www.quince.com" target="_blank">Quince</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-b">B Tier</div>
+        <div class="price-badge price-mid">$20 – $100</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Minimalist</span>
+      <span class="tag">Basics</span>
+      <span class="tag">Casual</span>
+      <span class="tag">Luxury Materials</span>
+      <span class="tag">Capsule Wardrobe</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Cashmere and knitwear are exceptional value</li>
+          <li>Ships direct from factory — low prices</li>
+          <li>365 day return policy</li>
+          <li>Sustainable materials and ethics</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Zero edge or streetwear presence</li>
+          <li>Dress shirts underdeliver</li>
+          <li>Sizing runs fitted — size up</li>
+          <li>Delicate pieces need careful washing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RYOKO RAIN -->
+  <div class="card" data-tags="premium luxury streetwear alt japanese">
+    <div class="card-header">
+      <div class="brand-name"><a href="https://ryokorain.com" target="_blank">Ryoko Rain</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="tier-badge tier-badge-a">A Tier</div>
+        <div class="price-badge price-high">$50 – $180</div>
+      </div>
+    </div>
+    <div class="aesthetics">
+      <span class="tag">Luxury Streetwear</span>
+      <span class="tag">Japanese Heritage</span>
+      <span class="tag">Alt</span>
+      <span class="tag">Graphic</span>
+      <span class="tag">Streetwear</span>
+    </div>
+    <div class="divider"></div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="col-label">Pros</div>
+        <ul>
+          <li>Real identity — butterfly motif, Japanese roots</li>
+          <li>Worn by athletes and entertainers</li>
+          <li>Made in Orange County, CA</li>
+          <li>Strong collab game (LA Galaxy, MLB)</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="col-label">Cons</div>
+        <ul>
+          <li>Pricier than most brands on this list</li>
+          <li>Pieces sell out fast</li>
+          <li>Limited returns — store credit only</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 </div><!-- end grid -->
 </div><!-- end tab-brands -->
@@ -1260,6 +1337,7 @@
         <div class="tier-chip">COS<div class="tier-tooltip">Elevated minimalism done right. Outerwear and layering pieces are exceptional.</div></div>
         <div class="tier-chip">Insomnia Visuals<div class="tier-tooltip">Genuine subculture soul. The Scream Hoodie is iconic. If dark alt is your lane, this is your brand.</div></div>
         <div class="tier-chip">Pleasures<div class="tier-tooltip">Real street credibility. Graphic work is second to none in this price range.</div></div>
+        <div class="tier-chip">Ryoko Rain<div class="tier-tooltip">OC luxury streetwear with real soul. Japanese heritage, butterfly motif, and serious collab credibility. Worth the splurge.</div></div>
       </div>
     </div>
 
@@ -1271,6 +1349,7 @@
         <div class="tier-chip">Thrills Co<div class="tier-tooltip">Massively underrated. Vintage graphics and workwear cuts done properly. Should be way more famous.</div></div>
         <div class="tier-chip">RVCA<div class="tier-tooltip">Art meets skate. Great quality for the price. Underrated in fashion circles.</div></div>
         <div class="tier-chip">Vans<div class="tier-tooltip">Iconic footwear, weaker apparel. Old Skool is timeless. Quality dipped but the classics hold.</div></div>
+        <div class="tier-chip">Quince<div class="tier-tooltip">Insane value for cashmere and knitwear. Zero streetwear cred but as a basics layer brand it genuinely delivers.</div></div>
       </div>
     </div>
 
@@ -1360,6 +1439,7 @@
       else if (type === 'streetwear') show = tags.includes('streetwear');
       else if (type === 'basics') show = tags.includes('basics');
       else if (type === 'alt') show = tags.includes('alt') || tags.includes('grunge');
+      else if (type === 'luxury') show = tags.includes('luxury') || tags.includes('premium');
 
       card.style.display = show ? 'block' : 'none';
       if (show) {
